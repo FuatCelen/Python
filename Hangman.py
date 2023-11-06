@@ -1,65 +1,16 @@
 import random
-stages = ['''
-  +---+
-  |   |
-  O   |
- /|\  |
- / \  |
-      |
-=========
-''', '''
-  +---+
-  |   |
-  O   |
- /|\  |
- /    |
-      |
-=========
-''', '''
-  +---+
-  |   |
-  O   |
- /|\  |
-      |
-      |
-=========
-''', '''
-  +---+
-  |   |
-  O   |
- /|   |
-      |
-      |
-=========''', '''
-  +---+
-  |   |
-  O   |
-  |   |
-      |
-      |
-=========
-''', '''
-  +---+
-  |   |
-  O   |
-      |
-      |
-      |
-=========
-''', '''
-  +---+
-  |   |
-      |
-      |
-      |
-      |
-=========
-''']
+from hangman_art import stages
+from hangman_art import logo
+from hangman_words import word_list
 
-word_list = ["apple","camel","umbrella"]
+print(logo)
+
+
+
+
 chosen_word = random.choice(word_list)
 end_of_game = False
-print(f'solutin {chosen_word}')
+
 display = []
 
 lives = 6
@@ -69,12 +20,14 @@ word_length = len(chosen_word)
 for letter in range (word_length):
     display.append("_")
     
-print(display)
 
 
 
 while  not end_of_game:
     guess = input("please guess a letter:")
+
+    if guess in display:
+        print(f"you have already guessed {guess}")
 
     for position in range(word_length):
         letter = chosen_word[position]
